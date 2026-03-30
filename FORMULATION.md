@@ -132,10 +132,13 @@ $$
 ### Semi-Implicit Advection-Diffusion ($\hat{\theta}_r, \hat{q}_t$)
 
 1. **Apply all explicit terms, excluding diffusion:**
+   
 $$
 \hat{\theta}^n \rightarrow \hat{\theta}^\ast \quad \text{and} \quad \hat{q}^n \rightarrow \hat{q}^\ast
 $$
+
 2. **Apply implicit diffusion and exact hyperdiffusion:**
+
 $$
 \hat{\theta}^\ast \rightarrow \hat{\theta}^{n+1} \quad \text{and} \quad \hat{q}^\ast \rightarrow \hat{q}^{n+1}
 $$
@@ -145,12 +148,16 @@ $$
 ### Semi-Implicit Incremental Projection ($\hat{u}, \hat{w}, \hat{P}$)
 
 1. **Apply all explicit terms, including explicit half of diffusion:**
+   
 $$
 \hat{u}^n \rightarrow \hat{u}^\ast \quad \text{and} \quad \hat{w}^n \rightarrow \hat{w}^\ast
 $$
+
 2. **Solve the incremental Pressure Poisson Equation (PPE) for the pressure perturbation:** $\hat{p}^\ast$
+   
 3. **Update the full pressure field** ($\hat{p}^n + \hat{p}^\ast \rightarrow \hat{p}^{n+1}$) **and apply the boundary conditions for** $\hat{p}^{n+1}$.
 4. **Apply the pressure gradient** ($\nabla \hat{p}^{n+1}$) **along with implicit diffusion and exact hyperdiffusion to correct the velocity field:**
+   
 $$
 \hat{u}^\ast \rightarrow \hat{u}^{n+1} \quad \text{and} \quad \hat{w}^\ast \rightarrow \hat{w}^{n+1}
 $$

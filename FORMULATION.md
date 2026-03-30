@@ -45,6 +45,7 @@ $$
 
 ### Pseudo-spectral Fourier Galerkin (Horizontal, 3/2 rule)
 Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber:
+
 $$
 \begin{align}
 \partial_x \hat{u}_k &= i k \hat{u}_k \\
@@ -54,6 +55,7 @@ $$
 
 ### 2nd-order Centered Differences (Vertical, Staggered)
 Vertical derivatives are computed using finite differences on a staggered C-grid:
+
 $$
 \begin{align}
 \partial_z \hat{u}_{k,j} &\approx \frac{\hat{u}_{k,j+1} - \hat{u}_{k,j-1}}{2\Delta z} = \frac{\hat{u}_{k,j+1/2} - \hat{u}_{k,j-1/2}}{\Delta z} \\
@@ -63,6 +65,7 @@ $$
 
 ### Nonlinear Advection
 To ensure stability and conservation, advection is formulated differently depending on the variable:
+
 $$
 \begin{align}
 u \cdot \nabla \theta &= \nabla \cdot (u\theta) \quad \text{(Flux form for } \theta_r, q_t \text{)} \\
@@ -72,6 +75,7 @@ $$
 
 ### Pressure Poisson Equation
 With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system for each wavenumber, removing the main computational bottleneck:
+
 $$
 \nabla^2 \widehat{P}^* \approx (-k^2 + \partial_z^2)\widehat{P}^*_{k,j} = (-k^2 I + D_{zz})\widehat{P}^*
 $$
@@ -84,6 +88,7 @@ The model integrates forward in time using a Semi-Implicit Incremental Projectio
 
 ### Explicit AB3 (Advection, Sources, Forcing)
 A 3rd-order Adams-Bashforth scheme is used for the fully nonlinear terms:
+
 $$
 \frac{u^* - u^n}{\Delta t} = \frac{23}{12}f(u^n) - \frac{16}{12}f(u^{n-1}) + \frac{5}{12}f(u^{n-2})
 $$

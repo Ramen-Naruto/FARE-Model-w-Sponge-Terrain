@@ -46,7 +46,7 @@ $$
 ## Spatial Implementation
 
 ### Horizontal Pseudo-spectral Fourier Galerkin with 3/2 dealiasing
-Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber:
+Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber. Because the FFT is a linear transform, applying it horizontally won't affect the linear operators in the vertical direction. 
 
 $$
 \begin{align}
@@ -55,7 +55,12 @@ $$
 \end{align}
 $$
 
-Note: When calculating nonlinear terms such as advection and piecewise scalars ($b, q_r$), we 3/2 pad the array (zero-padding for 1/4 of the highest positive and 1/4 of the highest negative wavenumbers), apply an inverse FFT, compute the term in physical space, reapply the FFT, and then depad. This allows us to remove energy from high wavenumbers which would otherwise be produced by the nonlinear advection and piecewise discontinuities.
+Note: Calculating nonlinear terms such as advection and piecewise scalars ($b, q_r$) requires transforming them to physical space; however, doing this naively can cause energy from unresolved wavenumbers to accumulate in the highest resolvable wavenumbers (aliasing). To address this, we remove said energy (dealiasing) through 3/2 zero-padding:
+1. Add a 1/2 zero pad symmetrically (1/4 to the upper wavenumber bound and 1/4 to the negatve lower wavenumber bound).
+2. Transform to physical space using an inverse FFT.
+3. Compute the term in physical space.
+4. Transform back into spectral space using an FFT.
+5. Dealias by removing the padded section.
 
 ### Vertical 2nd-order Staggered Centered Differences
 Vertical derivatives are computed using finite differences on a staggered C-grid:

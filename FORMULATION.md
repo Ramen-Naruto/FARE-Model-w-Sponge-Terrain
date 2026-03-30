@@ -94,6 +94,7 @@ $$
 $$
 
 ### Explicit EF (Pressure Forcing)
+
 An Euler Forward step handles the intermediate pressure updates:
 $$
 \frac{u^* - u^n}{\Delta t} = f(u^n)
@@ -101,12 +102,14 @@ $$
 
 ### Implicit CN (Vertical Diffusion)
 A Crank-Nicolson scheme is applied to vertical diffusion to maintain stability without overly restricting the time step:
+
 $$
 \frac{u^{n+1} - u^*}{\Delta t} = \frac{1}{2}(f(u^*) + f(u^{n+1}))
 $$
 
 ### Exact (Horizontal Hyperdiffusion)
 Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-frequency noise:
+
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$

@@ -96,6 +96,7 @@ $$
 ### Explicit EF (Pressure Forcing)
 
 An Euler Forward step handles the intermediate pressure updates:
+
 $$
 \frac{u^* - u^n}{\Delta t} = f(u^n)
 $$

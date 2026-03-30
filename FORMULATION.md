@@ -22,13 +22,14 @@ $$
 \theta_e &= \theta + \frac{L}{c_p} q_v \\
 \theta_r &= \theta - \frac{L}{c_p} q_r \\
 q_t &= q_v + q_r \\
-q_r = max(q_t - q_{vs}, 0)
+q_r = max(q_t - q_{vs}, 0) \\
 q_v &= min(q_t, q_{vs})
 \end{align}
 $$
 
 ### Buoyancy Formulation
 Buoyancy ($b$) is determined by a piecewise function depending on whether the total water mixing ratio ($q_t$) has reached the saturation threshold ($q_{vs}$). It relies on the background states for potential temperature $\tilde{\theta}(z)$ and water vapor $\tilde{q}_v(z)$.
+
 $$
 \begin{equation}
 b = g

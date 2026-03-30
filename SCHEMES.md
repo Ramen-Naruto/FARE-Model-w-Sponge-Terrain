@@ -3,12 +3,12 @@
 The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
 
 ## 1. Governing Dynamics
-The core system evolves the velocity vector $\mathbf{u}$, kinematic pressure $\phi$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \mathbf{u} \cdot \nabla$.
+The core system evolves the velocity vector $\mathbf{u}$, kinematic pressure $\phi$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
 
 $$
 \begin{align}
-\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t} = -\nabla \phi + \mathbf{k} b(\theta_r, q_t, z) \\
-\nabla \cdot \mathbf{u} = 0 \\
+\frac{\mathrm{D}\vec{u}}{\mathrm{D}t} = -\nabla \phi + \hat{k} b(\theta_r, q_t, z) \\
+\nabla \cdot \vec{u} = 0 \\
 \frac{\mathrm{D}\theta_r}{\mathrm{D}t} + \frac{L}{c_p} V_T \frac{\partial q_r}{\partial z} = 0 \\
 \frac{\mathrm{D}q_t}{\mathrm{D}t} - V_T \frac{\partial q_r}{\partial z} = 0
 \end{align}

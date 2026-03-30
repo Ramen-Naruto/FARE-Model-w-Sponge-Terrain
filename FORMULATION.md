@@ -40,15 +40,12 @@ b = g
 $$
 
 ##### Diffusion and Hyperdiffusion
-In addition to the inviscid equations above, we also introduce artificial vertical diffusion and horizontal hyperdiffusion to the right-hand side of the prognostic equations for both momentum and scalars to smoothen high-frequency spectral noise. 
-
-For any prognostic variable $\psi \in \{u, w, \theta_r, q_t\}$, the added dissipation terms take the exact form:
+In addition to the inviscid equations above, we also introduce artificial vertical diffusion ($\nu_{art}$) and horizontal hyperdiffusion ($\gamma_{art}$) to the right-hand side of the prognostic equations for momentum ($\u, w$) and scalars ($\theta_r, q_t$) to smoothen high-frequency spectral noise:
 
 $$
-\mathcal{D}(\psi) = \nu \frac{\partial^2 \psi}{\partial z^2} - \gamma \frac{\partial^4 \psi}{\partial x^4}
+\mathcal{D} = \nu_{art} \frac{\partial^2 }{\partial z^2} - \gamma_{art} \frac{\partial^4 }{\partial x^4}
 $$
 
-Where $\nu$ is the vertical diffusion coefficient (kinematic viscosity/diffusivity) and $\gamma$ is the horizontal hyperdiffusion coefficient.
 
 <br>
 <br>

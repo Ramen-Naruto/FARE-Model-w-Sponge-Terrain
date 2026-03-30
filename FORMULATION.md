@@ -14,20 +14,19 @@ $$
 \end{align}
 $$
 
-### Diagnostic Relations
+#### Diagnostic Relations
 The model relies on the following diagnostic relationships to relate potential temperature ($\theta$), equivalent potential temperature ($\theta_e$), rainy potential temperature ($\theta_r$), and the water vapor content ($q_t, q_v, q_r$).
 
 $$
 \begin{align}
 \theta_e &= \theta + \frac{L}{c_p} q_v \\
 \theta_r &= \theta - \frac{L}{c_p} q_r \\
-q_t &= q_v + q_r \\
 q_r &= max(q_t - q_{vs}, 0) \\
 q_v &= min(q_t, q_{vs})
 \end{align}
 $$
 
-### Buoyancy Formulation
+#### Buoyancy Formulation
 Buoyancy ($b$) is determined by a piecewise function depending on whether the total water mixing ratio ($q_t$) has reached the saturation threshold ($q_{vs}$). It relies on the background states for potential temperature $\tilde{\theta}(z)$ and water vapor $\tilde{q}_v(z)$.
 
 $$
@@ -40,6 +39,8 @@ b = g
 \end{equation}
 $$
 
+<br>
+<br>
 
 # Numerical Scheme
 
@@ -62,6 +63,7 @@ Note: Calculating nonlinear terms such as advection and piecewise scalars ($b, q
 4. Transform back into spectral space using an FFT.
 5. Dealias by removing the padded section.
 
+<br>
 
 ### Vertical 2nd-order Staggered Centered Differences
 Vertical derivatives are computed using finite differences on a staggered C-grid.
@@ -75,6 +77,7 @@ $$
 
 Note: Because the FFT is a linear transform, applying it horizontally won't affect the linear operators in the vertical direction, allowing us to treat the vertical direction purely with finite differences.
 
+<br>
 
 ### Nonlinear Advection
 To ensure stability and conservation, advection is formulated differently depending on the variable:
@@ -86,6 +89,7 @@ u \cdot \nabla v &= \frac{1}{2}(\nabla \cdot (uv) + u \cdot \nabla v) \quad \tex
 \end{align}
 $$
 
+<br>
 
 ### Pressure Poisson Equation
 With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system along the vertical dimension for each horizontal wavenumber, removing the main computational bottleneck:
@@ -104,8 +108,9 @@ $$
 
 We integrate this vertical pressure gradient analytically from the surface upward using a cumulative sum. This recovers the mean pressure profile while explicitly pinning the surface pressure to a reference value.
 
+<br>
 ---
-
+<br>
 ## Time Implementation
 
 The model integrates forward in time using a Semi-Implicit Incremental Projection method. The integration operators are split based on the physical process:
@@ -117,6 +122,8 @@ $$
 \frac{u^* - u^n}{\Delta t} = \frac{23}{12}f(u^n) - \frac{16}{12}f(u^{n-1}) + \frac{5}{12}f(u^{n-2})
 $$
 
+<br>
+
 ### Explicit EF (Pressure Forcing)
 
 An Euler Forward step handles the intermediate pressure updates:
@@ -125,6 +132,8 @@ $$
 \frac{u^* - u^n}{\Delta t} = f(u^n)
 $$
 
+<br>
+
 ### Implicit CN (Vertical Diffusion)
 A Crank-Nicolson scheme is applied to vertical diffusion to maintain stability without overly restricting the time step:
 
@@ -132,14 +141,17 @@ $$
 \frac{u^{n+1} - u^\ast}{\Delta t} = \frac{1}{2}(f(u^\ast) + f(u^{n+1}))
 $$
 
+<br>
+
 ### Exact (Horizontal Hyperdiffusion)
 Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-frequency noise:
 
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$
-
+<br>
 ---
+<br>
 
 ## Overall Procedure
 
@@ -157,6 +169,7 @@ $$
 \hat{\theta}^\ast \rightarrow \hat{\theta}^{n+1} \quad \text{and} \quad \hat{q}^\ast \rightarrow \hat{q}^{n+1}
 $$
 
+<br>
 
 ### Semi-Implicit Incremental Projection ($\hat{u}, \hat{w}, \hat{P}$)
 

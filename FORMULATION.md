@@ -22,7 +22,7 @@ $$
 \theta_e &= \theta + \frac{L}{c_p} q_v \\
 \theta_r &= \theta - \frac{L}{c_p} q_r \\
 q_t &= q_v + q_r \\
-q_r = max(q_t - q_{vs}, 0) \\
+q_r &= max(q_t - q_{vs}, 0) \\
 q_v &= min(q_t, q_{vs})
 \end{align}
 $$

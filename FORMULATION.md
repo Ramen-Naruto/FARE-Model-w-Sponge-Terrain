@@ -77,7 +77,7 @@ $$
 With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system for each wavenumber, removing the main computational bottleneck:
 
 $$
-\nabla^2 \widehat{P}^{*} \approx (-k^2 + \partial_z^{2})\widehat{P}^{*}_{k,j} = (-k^2 I + D_{zz})\widehat{P}^{*}
+\nabla^2 \widehat{P}^\ast \approx (-k^2 + \partial_z^2)\widehat{P}^\ast_{k,j} = (-k^2 I + D_{zz})\widehat{P}^\ast
 $$
 
 ---
@@ -104,7 +104,7 @@ $$
 A Crank-Nicolson scheme is applied to vertical diffusion to maintain stability without overly restricting the time step:
 
 $$
-\frac{u^{n+1} - u^{*}}{\Delta t} = \frac{1}{2}(f(u^{*}) + f(u^{n+1}))
+\frac{u^{n+1} - u^\ast}{\Delta t} = \frac{1}{2}(f(u^\ast) + f(u^{n+1}))
 $$
 
 ### Exact (Horizontal Hyperdiffusion)

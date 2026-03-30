@@ -2,7 +2,7 @@
 
 The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
 
-## 1. Governing Dynamics
+## Governing Dynamics
 The core system evolves the velocity vector $\vec{u}$, pressure $P$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
 
 $$
@@ -14,20 +14,21 @@ $$
 \end{align}
 $$
 
-## 2. Diagnostic Relations
-The model relies on the following diagnostic relationships to relate potential temperature ($\theta$), equivalent potential temperature ($\theta_e$), rainy potential temperature ($\theta_r$), and the various water phases ($q_t, q_v, q_r$):
+### Diagnostic Relations
+The model relies on the following diagnostic relationships to relate potential temperature ($\theta$), equivalent potential temperature ($\theta_e$), rainy potential temperature ($\theta_r$), and the water vapor content ($q_t, q_v, q_r$).
 
 $$
 \begin{align}
 \theta_e &= \theta + \frac{L}{c_p} q_v \\
 \theta_r &= \theta - \frac{L}{c_p} q_r \\
-q_t &= q_v + q_r
+q_t &= q_v + q_r \\
+q_r = max(q_t - q_{vs}, 0)
+q_v &= min(q_t, q_{vs})
 \end{align}
 $$
 
-## 3. Buoyancy Formulation
+### Buoyancy Formulation
 Buoyancy ($b$) is determined by a piecewise function depending on whether the total water mixing ratio ($q_t$) has reached the saturation threshold ($q_{vs}$). It relies on the background states for potential temperature $\tilde{\theta}(z)$ and water vapor $\tilde{q}_v(z)$.
-
 $$
 \begin{equation}
 b = g

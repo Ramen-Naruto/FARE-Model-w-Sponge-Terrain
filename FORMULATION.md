@@ -14,7 +14,7 @@ $$
 \end{align}
 $$
 
-#### Diagnostic Relations
+##### Diagnostic Relations
 The model relies on the following diagnostic relationships to relate potential temperature ($\theta$), equivalent potential temperature ($\theta_e$), rainy potential temperature ($\theta_r$), and the water vapor content ($q_t, q_v, q_r$).
 
 $$
@@ -26,7 +26,7 @@ q_v &= min(q_t, q_{vs})
 \end{align}
 $$
 
-#### Buoyancy Formulation
+##### Buoyancy Formulation
 Buoyancy ($b$) is determined by a piecewise function depending on whether the total water mixing ratio ($q_t$) has reached the saturation threshold ($q_{vs}$). It relies on the background states for potential temperature $\tilde{\theta}(z)$ and water vapor $\tilde{q}_v(z)$.
 
 $$
@@ -38,6 +38,17 @@ b = g
 \end{cases}
 \end{equation}
 $$
+
+##### Diffusion and Hyperdiffusion
+In addition to the inviscid equations above, we also introduce artificial vertical diffusion and horizontal hyperdiffusion to the right-hand side of the prognostic equations for both momentum and scalars to smoothen high-frequency spectral noise. 
+
+For any prognostic variable $\psi \in \{u, w, \theta_r, q_t\}$, the added dissipation terms take the exact form:
+
+$$
+\mathcal{D}(\psi) = \nu \frac{\partial^2 \psi}{\partial z^2} - \gamma \frac{\partial^4 \psi}{\partial x^4}
+$$
+
+Where $\nu$ is the vertical diffusion coefficient (kinematic viscosity/diffusivity) and $\gamma$ is the horizontal hyperdiffusion coefficient.
 
 <br>
 <br>
@@ -193,4 +204,3 @@ $$
 $$
 \hat{u}^\ast \rightarrow \hat{u}^{n+1} \quad \text{and} \quad \hat{w}^\ast \rightarrow \hat{w}^{n+1}
 $$
-

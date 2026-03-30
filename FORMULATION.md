@@ -3,11 +3,11 @@
 The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
 
 ## 1. Governing Dynamics
-The core system evolves the velocity vector $\vec{u}$, kinematic pressure $\phi$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
+The core system evolves the velocity vector $\vec{u}$, pressure $P$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
 
 $$
 \begin{align}
-\frac{\mathrm{D}\vec{u}}{\mathrm{D}t} = -\nabla \phi + \hat{k} b(\theta_r, q_t, z) \\
+\frac{\mathrm{D}\vec{u}}{\mathrm{D}t} = -\frac{1}{\rho}\nabla P + \hat{k} b(\theta_r, q_t, z) \\
 \nabla \cdot \vec{u} = 0 \\
 \frac{\mathrm{D}\theta_r}{\mathrm{D}t} + \frac{L}{c_p} V_T \frac{\partial q_r}{\partial z} = 0 \\
 \frac{\mathrm{D}q_t}{\mathrm{D}t} - V_T \frac{\partial q_r}{\partial z} = 0
@@ -124,3 +124,32 @@ Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$
+
+## Overall Procedure
+
+### Semi-Implicit Advection-Diffusion ($\hat{\theta}_r, \hat{q}_t$)
+
+1. **Apply all explicit terms, excluding diffusion:**
+$$
+\hat{\theta}^n \rightarrow \hat{\theta}^\ast \quad \text{and} \quad \hat{q}^n \rightarrow \hat{q}^\ast
+$$
+2. **Apply implicit diffusion and exact hyperdiffusion:**
+$$
+\hat{\theta}^\ast \rightarrow \hat{\theta}^{n+1} \quad \text{and} \quad \hat{q}^\ast \rightarrow \hat{q}^{n+1}
+$$
+
+---
+
+### Semi-Implicit Incremental Projection ($\hat{u}, \hat{w}, \hat{P}$)
+
+1. **Apply all explicit terms, including explicit half of diffusion:**
+$$
+\hat{u}^n \rightarrow \hat{u}^\ast \quad \text{and} \quad \hat{w}^n \rightarrow \hat{w}^\ast
+$$
+2. **Solve the incremental Pressure Poisson Equation (PPE) for the pressure perturbation:** $\hat{p}^\ast$
+3. **Update the full pressure field** ($\hat{p}^n + \hat{p}^\ast \rightarrow \hat{p}^{n+1}$) **and apply the boundary conditions for** $\hat{p}^{n+1}$.
+4. **Apply the pressure gradient** ($\nabla \hat{p}^{n+1}$) **along with implicit diffusion and exact hyperdiffusion to correct the velocity field:**
+$$
+\hat{u}^\ast \rightarrow \hat{u}^{n+1} \quad \text{and} \quad \hat{w}^\ast \rightarrow \hat{w}^{n+1}
+$$
+

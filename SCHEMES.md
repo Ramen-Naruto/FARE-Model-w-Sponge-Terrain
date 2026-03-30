@@ -7,10 +7,10 @@ The core system evolves the velocity vector $\mathbf{u}$, kinematic pressure $\p
 
 $$
 \begin{align}
-\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t} &= -\nabla \phi + \mathbf{k} b(\theta_r, q_t, z) \\
-\nabla \cdot \mathbf{u} &= 0 \\
-\frac{\mathrm{D}\theta_r}{\mathrm{D}t} + \frac{L}{c_p} V_T \frac{\partial q_r}{\partial z} &= 0 \\
-\frac{\mathrm{D}q_t}{\mathrm{D}t} - V_T \frac{\partial q_r}{\partial z} &= 0
+\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t} = -\nabla \phi + \mathbf{k} b(\theta_r, q_t, z) \\
+\nabla \cdot \mathbf{u} = 0 \\
+\frac{\mathrm{D}\theta_r}{\mathrm{D}t} + \frac{L}{c_p} V_T \frac{\partial q_r}{\partial z} = 0 \\
+\frac{\mathrm{D}q_t}{\mathrm{D}t} - V_T \frac{\partial q_r}{\partial z} = 0
 \end{align}
 $$
 

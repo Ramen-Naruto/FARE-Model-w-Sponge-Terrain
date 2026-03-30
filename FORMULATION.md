@@ -74,10 +74,10 @@ u \cdot \nabla v &= \frac{1}{2}(\nabla \cdot (uv) + u \cdot \nabla v) \quad \tex
 $$
 
 ### Pressure Poisson Equation
-With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system for each wavenumber, removing the main computational bottleneck:
+With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system along the vertical dimension for each horizontal wavenumber, removing the main computational bottleneck:
 
 $$
-\nabla^2 \widehat{P}^\ast \approx (-k^2 + \partial_z^2)\widehat{P}^\ast_{k,j} = (-k^2 I + D_{zz})\widehat{P}^\ast
+\nabla^2 \widehat{P}^\ast \approx (-k^2 I + D_{zz})\widehat{P}^\ast \approx \frac{\rho_{0}}{\Delta t} \nabla \cdot \vec{u}^\ast
 $$
 
 Note: For the horizontal mean wavemode ($k=0$), the $-k^2$ term in the Poisson equation vanishes. Combined with Neumann boundary conditions at the vertical limits, the resulting tridiagonal matrix is singular. 

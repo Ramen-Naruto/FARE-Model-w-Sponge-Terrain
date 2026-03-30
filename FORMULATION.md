@@ -157,7 +157,6 @@ $$
 \hat{\theta}^\ast \rightarrow \hat{\theta}^{n+1} \quad \text{and} \quad \hat{q}^\ast \rightarrow \hat{q}^{n+1}
 $$
 
----
 
 ### Semi-Implicit Incremental Projection ($\hat{u}, \hat{w}, \hat{P}$)
 

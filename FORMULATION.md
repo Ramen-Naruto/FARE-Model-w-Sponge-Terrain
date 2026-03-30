@@ -40,7 +40,7 @@ b = g
 $$
 
 ##### Diffusion and Hyperdiffusion
-In addition to the inviscid equations above, we also introduce artificial vertical diffusion ($\nu_{art}$) and horizontal hyperdiffusion ($\gamma_{art}$) to the right-hand side of the prognostic equations for momentum ($\u, w$) and scalars ($\theta_r, q_t$) to smoothen high-frequency spectral noise:
+In addition to the inviscid equations above, we also introduce artificial vertical diffusion ($\nu_{art}$) and horizontal hyperdiffusion ($\gamma_{art}$) to the right-hand side of the prognostic equations for momentum ($u, w$) and scalars ($\theta_r, q_t$) to smoothen high-frequency spectral noise:
 
 $$
 \mathcal{D} = \nu_{art} \frac{\partial^2 }{\partial z^2} - \gamma_{art} \frac{\partial^4 }{\partial x^4}

@@ -46,7 +46,7 @@ $$
 ## Spatial Implementation
 
 ### Horizontal Pseudo-spectral Fourier Galerkin with 3/2 dealiasing
-Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber. Because the FFT is a linear transform, applying it horizontally won't affect the linear operators in the vertical direction. 
+Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber. 
 
 $$
 \begin{align}
@@ -62,8 +62,9 @@ Note: Calculating nonlinear terms such as advection and piecewise scalars ($b, q
 4. Transform back into spectral space using an FFT.
 5. Dealias by removing the padded section.
 
+
 ### Vertical 2nd-order Staggered Centered Differences
-Vertical derivatives are computed using finite differences on a staggered C-grid:
+Vertical derivatives are computed using finite differences on a staggered C-grid.
 
 $$
 \begin{align}
@@ -71,6 +72,9 @@ $$
 \partial_z^2 \hat{u}_{k,j} &\approx \frac{\hat{u}_{k,j+1} - 2\hat{u}_{k,j} + \hat{u}_{k,j-1}}{\Delta z^2}
 \end{align}
 $$
+
+Note: Because the FFT is a linear transform, applying it horizontally won't affect the linear operators in the vertical direction, allowing us to treat the vertical direction purely with finite differences.
+
 
 ### Nonlinear Advection
 To ensure stability and conservation, advection is formulated differently depending on the variable:
@@ -81,6 +85,7 @@ u \cdot \nabla \theta &= \nabla \cdot (u\theta) \quad \text{(Flux form for } \th
 u \cdot \nabla v &= \frac{1}{2}(\nabla \cdot (uv) + u \cdot \nabla v) \quad \text{(Skew-symmetric form for } u, w \text{)}
 \end{align}
 $$
+
 
 ### Pressure Poisson Equation
 With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system along the vertical dimension for each horizontal wavenumber, removing the main computational bottleneck:
@@ -133,6 +138,8 @@ Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$
+
+---
 
 ## Overall Procedure
 

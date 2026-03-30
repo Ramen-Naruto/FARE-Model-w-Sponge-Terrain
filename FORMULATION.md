@@ -14,7 +14,7 @@ $$
 \end{align}
 $$
 
-##### Diagnostic Relations
+#### Diagnostic Relations
 The model relies on the following diagnostic relationships to relate potential temperature ($\theta$), equivalent potential temperature ($\theta_e$), rainy potential temperature ($\theta_r$), and the water vapor content ($q_t, q_v, q_r$).
 
 $$
@@ -26,7 +26,7 @@ q_v &= min(q_t, q_{vs})
 \end{align}
 $$
 
-##### Buoyancy Formulation
+#### Buoyancy Formulation
 Buoyancy ($b$) is determined by a piecewise function depending on whether the total water mixing ratio ($q_t$) has reached the saturation threshold ($q_{vs}$). It relies on the background states for potential temperature $\tilde{\theta}(z)$ and water vapor $\tilde{q}_v(z)$.
 
 $$
@@ -39,7 +39,7 @@ b = g
 \end{equation}
 $$
 
-##### Diffusion and Hyperdiffusion
+#### Diffusion and Hyperdiffusion
 In addition to the inviscid equations above, we also introduce artificial vertical diffusion ($\nu_{art}$) and horizontal hyperdiffusion ($\gamma_{art}$) to the right-hand side of the prognostic equations for momentum ($u, w$) and scalars ($\theta_r, q_t$) to smoothen high-frequency spectral noise:
 
 $$
@@ -126,7 +126,7 @@ We integrate this vertical pressure gradient analytically from the surface upwar
 
 The model integrates forward in time using a Semi-Implicit Incremental Projection method. The integration operators are split based on the physical process:
 
-### Explicit AB3 (Advection, Sources, Forcing)
+#### Explicit AB3 (Advection, Sources, Forcing)
 A 3rd-order Adams-Bashforth scheme is used for the fully nonlinear terms:
 
 $$
@@ -135,7 +135,7 @@ $$
 
 <br>
 
-### Explicit EF (Pressure Forcing)
+#### Explicit EF (Pressure Forcing)
 
 An Euler Forward step handles the intermediate pressure updates:
 
@@ -145,7 +145,7 @@ $$
 
 <br>
 
-### Implicit CN (Vertical Diffusion)
+#### Implicit CN (Vertical Diffusion)
 A Crank-Nicolson scheme is applied to vertical diffusion to maintain stability without overly restricting the time step:
 
 $$
@@ -154,7 +154,7 @@ $$
 
 <br>
 
-### Exact (Horizontal Hyperdiffusion)
+#### Exact (Horizontal Hyperdiffusion)
 Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-frequency noise:
 
 $$

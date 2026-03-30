@@ -131,7 +131,7 @@ $$
 
 ### Semi-Implicit Advection-Diffusion ($\hat{\theta}_r, \hat{q}_t$)
 
-1. **Apply all explicit terms, excluding diffusion:**
+1. **Apply all explicit terms with 3/2 dealiasing, excluding diffusion:**
    
 $$
 \hat{\theta}^n \rightarrow \hat{\theta}^\ast \quad \text{and} \quad \hat{q}^n \rightarrow \hat{q}^\ast
@@ -147,7 +147,7 @@ $$
 
 ### Semi-Implicit Incremental Projection ($\hat{u}, \hat{w}, \hat{P}$)
 
-1. **Apply all explicit terms, including explicit half of diffusion:**
+1. **Apply all explicit terms with 3/2 dealiasing, including the explicit half of diffusion:**
    
 $$
 \hat{u}^n \rightarrow \hat{u}^\ast \quad \text{and} \quad \hat{w}^n \rightarrow \hat{w}^\ast

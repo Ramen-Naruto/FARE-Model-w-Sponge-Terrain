@@ -45,7 +45,7 @@ $$
 
 ## Spatial Implementation
 
-### Pseudo-spectral Fourier Galerkin (Horizontal, 3/2 rule)
+### Horizontal Pseudo-spectral Fourier Galerkin with 3/2 dealiasing
 Horizontal derivatives are computed in spectral space, where $k$ is the wavenumber:
 
 $$
@@ -55,7 +55,7 @@ $$
 \end{align}
 $$
 
-### 2nd-order Centered Differences (Vertical, Staggered)
+### Vertical 2nd-order Staggered Centered Differences
 Vertical derivatives are computed using finite differences on a staggered C-grid:
 
 $$

@@ -2,7 +2,7 @@
 
 The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
 
-## Governing Dynamics
+### Governing Dynamics
 The core system evolves the velocity vector $\vec{u}$, pressure $P$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
 
 $$
@@ -87,7 +87,7 @@ Note: Because the FFT is a linear transform, applying it horizontally won't affe
 
 <br>
 
-### Nonlinear Advection
+#### Nonlinear Advection
 To ensure stability and conservation, advection is formulated differently depending on the variable:
 
 $$
@@ -99,7 +99,7 @@ $$
 
 <br>
 
-### Pressure Poisson Equation
+#### Pressure Poisson Equation
 With the hybrid spatial discretization, the continuous PPE reduces to a tridiagonal matrix system along the vertical dimension for each horizontal wavenumber, removing the main computational bottleneck:
 
 $$

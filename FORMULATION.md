@@ -111,6 +111,7 @@ We integrate this vertical pressure gradient analytically from the surface upwar
 <br>
 ---
 <br>
+
 ## Time Implementation
 
 The model integrates forward in time using a Semi-Implicit Incremental Projection method. The integration operators are split based on the physical process:
@@ -149,6 +150,7 @@ Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$
+
 <br>
 ---
 <br>

@@ -109,7 +109,9 @@ $$
 We integrate this vertical pressure gradient analytically from the surface upward using a cumulative sum. This recovers the mean pressure profile while explicitly pinning the surface pressure to a reference value.
 
 <br>
+
 ---
+
 <br>
 
 ## Time Implementation
@@ -152,7 +154,9 @@ $$
 $$
 
 <br>
+
 ---
+
 <br>
 
 ## Overall Procedure

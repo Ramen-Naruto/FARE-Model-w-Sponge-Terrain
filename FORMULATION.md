@@ -106,9 +106,7 @@ $$
 \nabla^2 \widehat{P}^\ast \approx (-k^2 I + D_{zz})\widehat{P}^\ast \approx \frac{\rho_{0}}{\Delta t} \nabla \cdot (\widehat{\vec{u}}^\ast)
 $$
 
-Note: For the horizontal mean wavemode ($k=0$), the $-k^2$ term in the Poisson equation vanishes. Combined with Neumann boundary conditions at the vertical limits, the resulting tridiagonal matrix is singular. 
-
-We bypass this singularity by solving the $k=0$ pressure analytically. Because mass conservation and rigid boundaries require the mean vertical velocity to be zero at all heights ($w^{n+1}_{k=0} = 0$), the projection step for the mean mode simplifies to:
+Note: For the horizontal mean wavemode ($k=0$), the $-k^2$ term in the Poisson equation vanishes. Combined with Neumann boundary conditions at the vertical limits, the resulting tridiagonal matrix is singular. We bypass this singularity by solving the $k=0$ pressure analytically. Because mass conservation and rigid boundaries require the mean vertical velocity to be zero at all heights ($w^{n+1}_{k=0} = 0$), the projection step for the mean mode simplifies to:
 
 $$
 \frac{\partial \widehat{P}^\ast_0}{\partial z} = \rho_0 \frac{\widehat{w}^\ast_0}{\Delta t}

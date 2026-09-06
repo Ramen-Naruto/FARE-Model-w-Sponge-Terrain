@@ -12,9 +12,9 @@ The baseline state is initialized with a small random potential-temperature pert
 
 ![Cooling and moistening forcing profiles](../notebooks/useful_visuals/forcing-profs.png)
 
-## Shallow convection
+## Scattered convection (shallow_convection)
 
-The shallow-convection case is the baseline scattered-convection experiment. It starts with no imposed background wind and random near-surface temperature perturbations. Horizontally uniform cooling and moistening support moist overturning while leaving the organization to internally generated turbulence.
+The scattered convection case starts with no imposed background wind and random near-surface temperature perturbations. Horizontally uniform cooling and moistening support moist overturning while leaving the organization to internally generated turbulence.
 
 ![Scattered convection](../notebooks/useful_visuals/shallow-convection.png)
 
@@ -32,7 +32,7 @@ scenario = shallow_convection()
 
 ![Squall line](../notebooks/useful_visuals/squall-line.png)
 
-The squall-line case retains the thermodynamic setup of shallow convection and relaxes towards a background zonal wind with significant vertical shear over $\tau_u=14400$ s. The background wind is
+The squall-line case retains the thermodynamic setup of scattered convection and relaxes towards a background zonal wind with significant vertical shear over $\tau_u=14400$ s. The background wind is
 
 ![Squall-line background wind profile](../notebooks/useful_visuals/background-wind-shear.png)
 

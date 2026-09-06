@@ -44,7 +44,7 @@ class NumericalParameters:
     """Store grid, time-integration, and artificial-diffusion settings."""
 
     L: tuple[float, float] # domain lengths in horizontal and vertical directions
-    grid: tuple[int, int] # number of grid points in horizontal and vertical directions
+    grid: tuple[int, int] # number of grid points in horizontal and vertical directions. It will include both boundaries, so the number of interior points is grid[0]-1 in horizontal (since periodic) and grid[1]-2 in vertical (since bounded).
     dt: float # physical time step
     T: float # final time
     s: int # saves every s time steps
@@ -79,7 +79,7 @@ class Scenario:
     poti: Profile # initial potential temperature profile
     qvi: Profile # initial specific humidity profile
     pot0: Profile # background potential temperature profile
-    f0: Profile  # Exner function profile ()
+    f0: Profile  # Exner function profile
     u_relax: Profile | None = None
     moistening: Profile | None = None
     cooling: Profile | None = None

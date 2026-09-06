@@ -26,6 +26,7 @@ def animate_temperature_velocity(
     z_cut: int | None = None,
     fps: int = 20,
     frames: slice | None = None,
+    temp_limit: float | None = None,
 ) -> FuncAnimation:
     """Animate potential-temperature perturbations and staggered-grid velocity vectors selected by frames."""
 
@@ -57,7 +58,10 @@ def animate_temperature_velocity(
     # tuning parameter for arrow length. DECREASE this number to make arrows longer.
     # adjust this until the max speed arrow just touches the next grid point.
     fig, ax = plt.subplots(figsize=(15, 9), dpi=200)
-    temperature_limit = max(5.0, float(np.max(np.abs(temperature - np.mean(temperature, axis=1, keepdims=True)))))
+    if temp_limit is not None:
+        temperature_limit = temp_limit
+    else:
+        temperature_limit = max(5.0, float(np.max(np.abs(temperature - np.mean(temperature, axis=1, keepdims=True)))))
     norm_temperature = colors.Normalize(vmin=-temperature_limit, vmax=temperature_limit)
     norm_velocity = colors.Normalize(vmin=0, vmax=max_spd)
     terrain_x, terrain_z = _terrain(model)

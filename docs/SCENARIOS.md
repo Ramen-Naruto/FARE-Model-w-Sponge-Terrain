@@ -26,7 +26,7 @@ from fare_model import shallow_convection
 scenario = shallow_convection()
 ~~~
 
-[![Shallow Convection Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
+[![Shallow Convection Simulation Video](https://img.youtube.com/vi/QHOAgpSjFoQ/maxresdefault.jpg)](https://youtu.be/QHOAgpSjFoQ)
 
 ## Squall line
 

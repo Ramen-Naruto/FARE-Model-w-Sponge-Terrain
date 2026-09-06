@@ -128,36 +128,25 @@ We integrate this vertical pressure gradient analytically from the surface upwar
 
 The model integrates forward in time using a Semi-Implicit Incremental Projection method. The integration operators are split based on the physical process:
 
-#### Explicit AB3 (Advection, Sources, Forcing)
+#### Explicit AB3/EF (Advection, Sources, Forcing)
 A 3rd-order Adams-Bashforth scheme is used for the fully nonlinear terms:
 
 $$
 \frac{u^* - u^n}{\Delta t} = \frac{23}{12}f(u^n) - \frac{16}{12}f(u^{n-1}) + \frac{5}{12}f(u^{n-2})
 $$
 
-<br>
-
-#### Explicit EF (Pressure Forcing)
-
-An Euler Forward step handles the intermediate pressure updates:
-
-$$
-\frac{u^* - u^n}{\Delta t} = f(u^n)
-$$
+The background forcing terms can just use first-order Euler Forward, since they are already exact. 
 
 <br>
 
-#### Implicit CN (Vertical Diffusion)
+#### Implicit CN (Vertical Diffusion) + Exact (Horizontal Hyperdiffusion)
 A Crank-Nicolson scheme is applied to vertical diffusion to maintain stability without overly restricting the time step:
 
 $$
 \frac{u^{n+1} - u^\ast}{\Delta t} = \frac{1}{2}(f(u^\ast) + f(u^{n+1}))
 $$
 
-<br>
-
-#### Exact (Horizontal Hyperdiffusion)
-Horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-frequency noise:
+Meanwhile, horizontal hyperdiffusion is solved exactly in spectral space to eliminate high-frequency noise:
 
 $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
@@ -165,11 +154,40 @@ $$
 
 <br>
 
+
+#### Explicit EF (Pressure Forcing)
+
+An Euler Forward step handles the pressure updates using intermediate fields which have already had the previous steps applied. 
+
+$$
+\frac{u^* - u^n}{\Delta t} = f(u^n)
+$$
+
+<br>
+
+#### Implicit EB Sponge/Terrain Damping
+
+Euler backwards steps are used to dampen fields in sponge/terrain regions, given by the mask $$M$$:
+$$
+\frac{u^{n+1} - u^{*}}{\Delta t} = -\frac{M(u^{n+1} - u_M)}{\tau_M}  ==>  \frac{u^* + \frac{\Delta t M}{\tau_M}u_M}{1 + \frac{\Delta t M}{\tau_M}}
+$$
+
 ---
 
 <br>
 
 ## Overall Procedure
+
+At the end of each step, we re-enforce the necessary boundary conditions.
+
+### Precalculations
+
+1. **Set up and/or calculate all physical and computational parameters that are used extensively in loop.**
+
+2. **Set up all matrices to be used to solve the implicit systems (in this case, they are all tridiagonal). Make sure to incorporate proper boundary conditions into the matrix.**
+
+3. **Using the provided initial conditions, calculate, interpolate, and/or FFT all initial parameters and set up sponge layer and terrain masks as necessary.**
+
 
 ### Semi-Implicit Advection-Diffusion ($\hat{\theta}_r, \hat{q}_t$)
 
@@ -203,3 +221,9 @@ $$
 $$
 \hat{u}^\ast \rightarrow \hat{u}^{n+1} \quad \text{and} \quad \hat{w}^\ast \rightarrow \hat{w}^{n+1}
 $$
+
+### Sponge, Terrain, and Filters
+
+1. **Damp the new solution according to the sponge/terrain masks.** 
+
+2. **Apply a RAW (Robert Asselin Williams) filter if using leapfrog to reduce the computational mode.**

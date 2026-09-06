@@ -94,4 +94,4 @@ scenario = atmospheric_river()
 
 The presentation tracks area-integrated temperature and water measures together with the Courant number and maximum vertical velocity. Equivalent potential temperature, $\theta_e$, is comparatively well conserved when rainwater remains small relative to vapor. CFL stability is a central practical constraint; the displayed squall-line integration eventually loses stability. Kinetic and potential energy are not expected to be tightly conserved because the experiments include external forcing, relaxation, and damping.
 
-![Saved Diagnostics](../notebooks/useful_visuals/diagonstics.png)
+![Saved Diagnostics](../notebooks/useful_visuals/diagnostics.png)

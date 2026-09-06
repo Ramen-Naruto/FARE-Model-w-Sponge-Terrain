@@ -1,22 +1,26 @@
 # FARE-Model-w-Sponge-Terrain
-This repository contains a 2D minimal numerical model for simulating moist, precipitating turbulent convection, including scattered convection, squall lines, and atmospheric rivers. It was developed as part of a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics. This codebase implements the Fast Autoconversion Rain Evaporation (FARE) formulation, where water vapor above the saturation vapor pressure is assumed to instantly condense into rainwater, and rainwater quickly evaporates back into water vapor as it falls. Most parameters and schemes are as described in:
 
-Hernandez-Duenas, Gerardo, Andrew J. Majda, Leslie M. Smith, and Samuel N. Stechmann. “Minimal Models for Precipitating Turbulent Convection.” Journal of Fluid Mechanics 717 (February 2013): 576–611. https://doi.org/10.1017/jfm.2012.597.
-
-This model can appropriately simulate nonlinear advection and phase changes associated with moist atmospheric systems, directly iterating velocities (u, w), pressure (P), and scalar pertubations such as rainy potential temperature ($\theta_r$) and total specific humidity ($q_t$). For more information on the FARE equations and numerical schemes used, see ```docs/FORMULATION.md```.
-
-Three key scenarios are presented as examples in the package:
-
-- Shallow Convection: Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013. It is referred to as `shallow_convection` in this implement.
-- Squall Line: Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
-- Atmospheric River: Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
-
-For more details on these scenarios, see  ```docs/SCENARIOS.md```.
+This project was originally started as a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics.
 
 [![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
 
+The repository contains a 2D minimal numerical model for simulating moist, precipitating turbulent convection by implementing the Fast Autoconversion Rain Evaporation (FARE) formulation, where water vapor above the saturation vapor pressure is assumed to instantly condense into rainwater, and rainwater quickly evaporates back into water vapor as it falls. Most parameters and schemes are as described in:
+
+Hernandez-Duenas, Gerardo, Andrew J. Majda, Leslie M. Smith, and Samuel N. Stechmann. “Minimal Models for Precipitating Turbulent Convection.” Journal of Fluid Mechanics 717 (February 2013): 576–611. https://doi.org/10.1017/jfm.2012.597.
+
+<br>
+
+The FARE model can appropriately simulate nonlinear advection and phase changes associated with moist atmospheric systems, directly iterating velocities (u, w), pressure (P), and scalar pertubations such as rainy potential temperature ($\theta_r$) and total specific humidity ($q_t$). For more information on the dynamics and numerical schemes used, see ```docs/FORMULATION.md```.
+
+Three key scenarios are presented as examples in the package, which are elaborated on in ```docs/SCENARIOS.md```:
+
+- *Scattered Convection:* Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013.
+- *Squall Line:* Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
+- *Atmospheric River:* Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
+
 The model can be adapted to 3D with not too much difficulty as both horizontal directions are assumed to be fully periodic, meaning that the FFTs can simply be replaced with 2D FFTs.
 
+<br>
 
 ## Python package
 

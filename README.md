@@ -3,7 +3,7 @@ This repository contains a 2D minimal numerical model for simulating moist, prec
 
 Hernandez-Duenas, Gerardo, Andrew J. Majda, Leslie M. Smith, and Samuel N. Stechmann. “Minimal Models for Precipitating Turbulent Convection.” Journal of Fluid Mechanics 717 (February 2013): 576–611. https://doi.org/10.1017/jfm.2012.597.
 
-This model can appropriately simulate nonlinear advection and phase changes associated with moist atmospheric systems, directly iterating velocities (u, w), pressure (P), and scalar pertubations such as rainy potential temperature ($\theta_r$) and total specific humidity ($q_t$). For more information on the FARE equations and numerical schemes used, see ```FORMULATION.md```.
+This model can appropriately simulate nonlinear advection and phase changes associated with moist atmospheric systems, directly iterating velocities (u, w), pressure (P), and scalar pertubations such as rainy potential temperature ($\theta_r$) and total specific humidity ($q_t$). For more information on the FARE equations and numerical schemes used, see ```docs/FORMULATION.md```.
 
 [![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
 
@@ -53,4 +53,4 @@ Three key scenarios are presented as examples:
 - Squall Line: Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
 - Atmospheric River: Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
 
-For more details on these scenarios, see  ```SCENARIOS.md```.
+For more details on these scenarios, see  ```docs/SCENARIOS.md```.

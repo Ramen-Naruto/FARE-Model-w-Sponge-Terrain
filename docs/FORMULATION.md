@@ -167,7 +167,7 @@ $$
 Euler backwards steps are used to dampen fields in sponge/terrain regions, given by the mask $M$:
 
 $$
-\frac{u^{n+1} - u^{\ast}}{\Delta t} = -\frac{M(u^{n+1} - u_M)}{\tau_M} &nbsp;&nbsp;&nbsp; \Longrightarrow &nbsp;&nbsp;&nbsp; u^{n+1} = \frac{u^{\ast} + \frac{\Delta t\,M}{\tau_M}u_M}{1 + \frac{\Delta t\,M}{\tau_M}}
+\frac{u^{n+1} - u^{\ast}}{\Delta t} = -\frac{M(u^{n+1} - u_M)}{\tau_M} \hspace{1cm} \Longrightarrow \hspace{1cm} u^{n+1} = \frac{u^{\ast} + (\frac{\Delta t}{\tau_M} M) u_M}{1 + \frac{\Delta t}{\tau_M} M}
 $$
 
 ---

@@ -26,6 +26,8 @@ from fare_model import shallow_convection
 scenario = shallow_convection()
 ~~~
 
+[![Shallow Convection Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
+
 ## Squall line
 
 ![Squall line](notebooks/useful_visuals/squall-line.png)
@@ -53,6 +55,8 @@ from fare_model import squall_line
 
 scenario = squall_line()
 ~~~
+
+[![Squall Line Simulation Video](https://img.youtube.com/vi/Bq_d9D17F0s/maxresdefault.jpg)](https://youtu.be/Bq_d9D17F0s)
 
 ## Atmospheric river
 
@@ -84,6 +88,10 @@ from fare_model import atmospheric_river
 scenario = atmospheric_river()
 ~~~
 
+[![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
+
 ## Diagnostics and interpretation
 
 The presentation tracks area-integrated temperature and water measures together with the Courant number and maximum vertical velocity. Equivalent potential temperature, $\theta_e$, is comparatively well conserved when rainwater remains small relative to vapor. CFL stability is a central practical constraint; the displayed squall-line integration eventually loses stability. Kinetic and potential energy are not expected to be tightly conserved because the experiments include external forcing, relaxation, and damping.
+
+![Saved Diagnostics](notebooks/useful_visuals/diagonstics.png)

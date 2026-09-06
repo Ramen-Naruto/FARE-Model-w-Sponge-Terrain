@@ -8,15 +8,15 @@ The presentation baseline uses a 256 km horizontal domain and a 15 km vertical d
 
 The baseline state is initialized with a small random potential-temperature perturbation below 2 km, initially saturated or nearly saturated low-level moisture, zero rainwater, and zero vertical velocity. The shared cooling and moistening profiles provide thermodynamic forcing. The zonal wind relaxes toward zero over $\tau_u=14400$ s.
 
-![Initial and saturated moisture profiles](notebooks/useful_visuals/initial-saturated-moisture-prof.png)
+![Initial and saturated moisture profiles](../notebooks/useful_visuals/initial-saturated-moisture-prof.png)
 
-![Cooling and moistening forcing profiles](notebooks/useful_visuals/forcing-profs.png)
+![Cooling and moistening forcing profiles](../notebooks/useful_visuals/forcing-profs.png)
 
 ## Shallow convection
 
 The shallow-convection case is the baseline scattered-convection experiment. It starts with no imposed background wind and random near-surface temperature perturbations. Horizontally uniform cooling and moistening support moist overturning while leaving the organization to internally generated turbulence.
 
-![Scattered convection](notebooks/useful_visuals/shallow-convection.png)
+![Scattered convection](../notebooks/useful_visuals/shallow-convection.png)
 
 Create it with:
 
@@ -30,11 +30,11 @@ scenario = shallow_convection()
 
 ## Squall line
 
-![Squall line](notebooks/useful_visuals/squall-line.png)
+![Squall line](../notebooks/useful_visuals/squall-line.png)
 
 The squall-line case retains the thermodynamic setup of shallow convection and relaxes towards a background zonal wind with significant vertical shear over $\tau_u=14400$ s. The background wind is
 
-![Squall-line background wind profile](notebooks/useful_visuals/background-wind-shear.png)
+![Squall-line background wind profile](../notebooks/useful_visuals/background-wind-shear.png)
 
 $$
 u_{\mathrm{bg}}(z)=
@@ -60,7 +60,7 @@ scenario = squall_line()
 
 ## Atmospheric river
 
-![Atmospheric river](notebooks/useful_visuals/atmospheric-river.png)
+![Atmospheric river](../notebooks/useful_visuals/atmospheric-river.png)
 
 The atmospheric-river configuration represents moist onshore flow over a 1.5 km mountain in a 12 km-deep domain. It combines a marine lower-tropospheric thermodynamic profile, a low-level jet, a coastal moisture source concentrated in roughly the lowest 1-2 km, and free-slip lower-boundary behavior for $u$.
 
@@ -73,11 +73,11 @@ To keep gravity waves and moisture from contaminating the interior, the case inc
 
 The schematic below shows the placement and purpose of these regions.
 
-![Atmospheric river sponge, terrain, and coastal moisture setup](notebooks/useful_visuals/atmospheric-river-set-up.png)
+![Atmospheric river sponge, terrain, and coastal moisture setup](../notebooks/useful_visuals/atmospheric-river-set-up.png)
 
 The background state combines a shallow marine boundary layer, an inversion near 1.25 km, low-level moisture, and a lower-tropospheric wind with an embedded jet, whose vertical profiles are shown:
 
-![Atmospheric river vertical profiles](notebooks/useful_visuals/background-atmospheric-river.png)
+![Atmospheric river vertical profiles](../notebooks/useful_visuals/background-atmospheric-river.png)
 
 
 Create it with:
@@ -94,4 +94,4 @@ scenario = atmospheric_river()
 
 The presentation tracks area-integrated temperature and water measures together with the Courant number and maximum vertical velocity. Equivalent potential temperature, $\theta_e$, is comparatively well conserved when rainwater remains small relative to vapor. CFL stability is a central practical constraint; the displayed squall-line integration eventually loses stability. Kinetic and potential energy are not expected to be tightly conserved because the experiments include external forcing, relaxation, and damping.
 
-![Saved Diagnostics](notebooks/useful_visuals/diagonstics.png)
+![Saved Diagnostics](../notebooks/useful_visuals/diagonstics.png)

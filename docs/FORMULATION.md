@@ -2,7 +2,7 @@
 
 The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
 
-![FARE fast-autoconversion microphysics diagram](notebooks/useful_visuals/moist_parameterization-hernandez-duanes.png)
+![FARE fast-autoconversion microphysics diagram](../notebooks/useful_visuals/moist_parameterization-hernandez-duanes.png)
 
 ### Governing Dynamics
 The core system evolves the velocity vector $\vec{u}$, pressure $P$, rainy potential temperature $\theta_r$, and total water mixing ratio $q_t$. The equations are expressed using the material derivative $\frac{\mathrm{D}}{\mathrm{D}t} = \frac{\partial}{\partial t} + \vec{u} \cdot \nabla$.
@@ -78,7 +78,7 @@ Note: Calculating nonlinear terms such as advection and piecewise scalars ($b, q
 ### Vertical 2nd-order Staggered Centered Differences
 Vertical derivatives are computed using finite differences on a staggered C-grid.
 
-![Staggered spatial grid](notebooks/useful_visuals/spatial_grid.png)
+![Staggered spatial grid](../notebooks/useful_visuals/spatial_grid.png)
 
 $$
 \begin{align}

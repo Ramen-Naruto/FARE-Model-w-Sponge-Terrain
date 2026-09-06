@@ -39,8 +39,7 @@ The squall-line case retains the thermodynamic setup of scattered convection and
 $$
 u_{\mathrm{bg}}(z)=
 \begin{cases}
-a\left[\cos\left(\dfrac{\pi z}{H_0}\right)
--\cos\left(\dfrac{2\pi z}{H_0}\right)\right], & z<H_0,\\[8pt]
+a\left[\cos\left(\dfrac{\pi z}{H_0}\right)-\cos\left(\dfrac{2\pi z}{H_0}\right)\right], & z<H_0,\\[8pt]
 -2a, & z\ge H_0,
 \end{cases}
 $$

@@ -152,8 +152,6 @@ $$
 \hat{u}_k^{n+1} = \exp(-\gamma k^4 \Delta t)\hat{u}_k^*
 $$
 
-<br>
-
 
 #### Explicit EF (Pressure Forcing)
 
@@ -163,11 +161,11 @@ $$
 \frac{u^* - u^n}{\Delta t} = f(u^n)
 $$
 
-<br>
 
 #### Implicit EB Sponge/Terrain Damping
 
-Euler backwards steps are used to dampen fields in sponge/terrain regions, given by the mask $$M$$:
+Euler backwards steps are used to dampen fields in sponge/terrain regions, given by the mask $M$:
+
 $$
 \frac{u^{n+1} - u^{*}}{\Delta t} = -\frac{M(u^{n+1} - u_M)}{\tau_M}  ==>  \frac{u^* + \frac{\Delta t M}{\tau_M}u_M}{1 + \frac{\Delta t M}{\tau_M}}
 $$

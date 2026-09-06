@@ -173,11 +173,8 @@ $$
 \;\Longrightarrow\;
 u^{n+1}
 =
-\frac{
-u^* + \left(\frac{\Delta t\,M}{\tau_M}\right)u_M
-}{
-1 + \frac{\Delta t\,M}{\tau_M}
-}
+\frac{u^* + \left(\frac{\Delta t\,M}{\tau_M}\right)u_M}
+{1 + \frac{\Delta t\,M}{\tau_M}}
 $$
 
 ---

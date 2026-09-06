@@ -7,7 +7,7 @@ This model can appropriately simulate nonlinear advection and phase changes asso
 
 Three key scenarios are presented as examples in the package:
 
-- Scattered Convection: Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013. 
+- Shallow Convection: Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013. It is referred to as `shallow_convection` in this implement.
 - Squall Line: Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
 - Atmospheric River: Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
 

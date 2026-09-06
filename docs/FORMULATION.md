@@ -1,6 +1,6 @@
 # Physical Formulation
 
-The model is built on the Moist Boussinesq Approximation, utilizing the Fast Autoconversion (FARE) limit for bulk microphysics. 
+The model is built on the Moist Boussinesq approximation, which assumes incompressibility ($\nabla \cdot u = 0$) and neglects density variations except in the moist buoyancy term, together with the Fast Autoconversion (FARE) limit for bulk cloud microphysics, which assumes that cloud condensate is converted to rain water instantaneously.
 
 <p align="center">
 <img src="../notebooks/useful_visuals/moist_parameterization-hernandez-duanes.png" alt="FARE fast-autoconversion microphysics diagram" width="40%">

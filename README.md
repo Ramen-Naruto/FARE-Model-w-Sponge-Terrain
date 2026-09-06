@@ -1,10 +1,10 @@
 # FARE-Model-w-Sponge-Terrain
 
-This model implementation was originally started as a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics.
+This model implementation originally began as a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics.
 
 [![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
 
-The repository contains a 2D minimal numerical model for simulating moist, precipitating turbulent convection by implementing the Fast Autoconversion Rain Evaporation (FARE) formulation, where water vapor above the saturation vapor pressure is assumed to instantly condense into rainwater, and rainwater quickly evaporates back into water vapor as it falls. Most parameters and schemes are as described in:
+The repository contains a 2D minimal numerical model for simulating moist, precipitating turbulent convection by implementing a Boussinesq atmosphere with the Fast Autoconversion Rain Evaporation (FARE) formulation, where water vapor above saturation is assumed to instantly condense into rainwater, and rainwater quickly evaporates back into water vapor as it falls. Most parameters and schemes are as described in:
 
 Hernandez-Duenas, Gerardo, Andrew J. Majda, Leslie M. Smith, and Samuel N. Stechmann. “Minimal Models for Precipitating Turbulent Convection.” Journal of Fluid Mechanics 717 (February 2013): 576–611. https://doi.org/10.1017/jfm.2012.597.
 

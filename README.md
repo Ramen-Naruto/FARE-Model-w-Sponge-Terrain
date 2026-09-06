@@ -5,23 +5,32 @@ Hernandez-Duenas, Gerardo, Andrew J. Majda, Leslie M. Smith, and Samuel N. Stech
 
 This model can appropriately simulate nonlinear advection and phase changes associated with moist atmospheric systems, directly iterating velocities (u, w), pressure (P), and scalar pertubations such as rainy potential temperature ($\theta_r$) and total specific humidity ($q_t$). For more information on the FARE equations and numerical schemes used, see ```docs/FORMULATION.md```.
 
+Three key scenarios are presented as examples in the package:
+
+- Scattered Convection: Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013. 
+- Squall Line: Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
+- Atmospheric River: Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
+
+For more details on these scenarios, see  ```docs/SCENARIOS.md```.
+
 [![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
 
-The model can be adapted to 3D with not too much difficulty as the horizontal directions are assumed to be fully periodic and are thus adaptable to fourier space independently of one another, meaning that the FFTs can simply be replaced with 2D FFTs.
+The model can be adapted to 3D with not too much difficulty as both horizontal directions are assumed to be fully periodic, meaning that the FFTs can simply be replaced with 2D FFTs.
+
 
 ## Python package
 
 For an example implementation of this package for FARE simulations, see ```notebooks/demo.ipynb```.
 
-The object-oriented package lives in `fare_model/`. Install it from the repository root with:
+The object-oriented package and code lives in `fare_model/`. Install it from the repository root with:
 
 ```bash
 pip install -e .
 ```
 
-The preset scenarios read the original height-dependent forcing tables from `profiles/moistening_profile.xls` and `profiles/cooling_profile.xls`.
+The preset scenarios  tables from `profiles/moistening_profile.xls` and `profiles/cooling_profile.xls`.
 
-Create, configure, and run a preset simulation through the `FARE` class:
+You can then create, configure, and run a preset or custom simulation by instantiating a `FARE` class object:
 
 ```python
 from fare_model import FARE, atmospheric_river
@@ -36,21 +45,19 @@ model = (
 model.solve(save=True, output_dir="output/atmospheric_river")
 ```
 
-Live Fourier-space fields are available through `model.state`; saved physical-space fields and diagnostics are available through `model.sol` and `model.stats`. `save=True` writes `solution.npz`, `stats.npz`, `state.npz`, and `metadata.json` to the supplied output directory. Continue an existing simulation without resetting the AB3 histories with:
+Fourier-space states used in the active simulation are available through `model.state`; saved physical-space solutions and diagnostics are available through `model.sol` and `model.stats`. `save=True` writes `solution.npz`, `stats.npz`, `state.npz`, and `metadata.json` to the supplied output directory. 
+
+You can also continue an existing simulation without resetting it using:
 
 ```python
 model.continue_solve(additional_steps=1000, save=True, output_dir="output/atmospheric_river")
 ```
 
-The package includes preset `shallow_convection()`, `squall_line()`, and `atmospheric_river()` scenarios. You can also run one from the command line:
+The package includes preset `shallow_convection()`, `squall_line()`, and `atmospheric_river()` scenarios, which can be applied onto the FARE object like so:
 
-```bash
-fare-model atmospheric_river --output-dir output/atmospheric_river
+```python
+from fare_model import shallow_convection
+model.set_scenario(shallow_convection())
 ```
 
-Three key scenarios are presented as examples:
-- Scattered Convection: Baseline turbulent simulation with horizontally uniform moisture/cooling forcing, no terrain modifications, and initial near-surface temperature pertubation as described in Hernandez-Duenas et al 2013. 
-- Squall Line: Introduces background wind shear to organize convection into fronts as specified in Hernandez-Duenas et al 2013.
-- Atmospheric River: Introduces a horizontally non-uniform moisture forcing, a Rayleigh-damped sponge mountain, and sponge layers in the upper and side boundaries to dampen gravity waves.
-
-For more details on these scenarios, see  ```docs/SCENARIOS.md```.
+Lastly, the package can also be accessed and ran through the command line; see `fare_model\__main__.py` for details.

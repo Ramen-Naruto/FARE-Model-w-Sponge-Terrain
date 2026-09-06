@@ -1,6 +1,6 @@
 # FARE-Model-w-Sponge-Terrain
 
-This project was originally started as a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics.
+This model implementation was originally started as a final project for the UCLA graduate course A&O SCI 212A - Numerical Methods for Geophysical Fluid Dynamics.
 
 [![Atmospheric River Simulation Video](https://img.youtube.com/vi/SKqMBoDVNAw/maxresdefault.jpg)](https://youtu.be/SKqMBoDVNAw)
 
